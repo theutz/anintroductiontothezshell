@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { normalize, modularScale } from 'polished'
+import { normalize, modularScale, fluidRange } from 'polished'
 
 const GlobalStyle = createGlobalStyle`
   ${normalize()}
@@ -7,6 +7,9 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'IBM Plex Sans Condensed', sans-serif;
     color: ${(props) => props.theme.text.dark};
+    margin: 0;
+    padding: 0;
+    width: 100%;
   }
 
   h1 {
@@ -18,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
 
   h2 {
     color: ${(props) => props.theme.primary['400']};
-    font-size: ${modularScale(7)};
+    font-size: ${modularScale(2)};
     font-weight: lighter;
     letter-spacing: -0.5pt;
   }
