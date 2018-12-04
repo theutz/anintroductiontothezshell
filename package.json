@@ -16,6 +16,7 @@
     "gatsby-source-filesystem": "^2.0.8",
     "gatsby-transformer-remark": "^2.1.15",
     "gatsby-transformer-sharp": "^2.1.8",
+    "polished": "^2.3.1",
     "prismjs": "^1.15.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -40,7 +41,11 @@
     "@commitlint/config-conventional": "^7.1.2",
     "husky": "^1.2.0",
     "prettier": "^1.15.3",
-    "pretty-quick": "^1.8.0"
+    "pretty-quick": "^1.8.0",
+    "stylelint": "^9.9.0",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.5.1"
   },
   "repository": {
     "type": "git",

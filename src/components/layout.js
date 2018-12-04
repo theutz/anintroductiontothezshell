@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import { ThemeProvider } from 'styled-components'
 import { StaticQuery, graphql } from 'gatsby'
-
+import GlobalStyle from './global-style'
 import Header from './header'
+import theme from '../theme'
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -29,9 +31,18 @@ const Layout = ({ children }) => (
           ]}
         >
           <html lang="en" />
+          <link
+            href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:300,400,400i,500,700"
+            rel="stylesheet"
+          />
         </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div>{children}</div>
+        <ThemeProvider theme={theme}>
+          <>
+            <GlobalStyle />
+            <Header siteTitle={data.site.siteMetadata.title} />
+            <div>{children}</div>
+          </>
+        </ThemeProvider>
       </>
     )}
   />
