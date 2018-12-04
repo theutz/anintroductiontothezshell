@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
-  "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "name": "anintroductiontothezshell",
+  "description": "An introduction the Z Shell",
+  "version": "0.0.1",
+  "author": "Michael Utz <michael@theutz.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.9.2",
     "gatsby": "^2.0.53",
@@ -23,7 +23,9 @@
     "styled-components": "^4.1.2"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "zshelll",
+    "zsh"
   ],
   "license": "MIT",
   "scripts": {
@@ -42,6 +44,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/theutz/anintroductiontothezshell"
   }
 }
