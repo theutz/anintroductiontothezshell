@@ -54,10 +54,20 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 0 1rem;
 
+  & pre {
+    margin: 1rem 0.25rem;
+  }
+
   & code {
     font-family: 'IBM Plex Mono', monospace;
     font-size: ${modularScale(-1)};
     line-height: 0;
+  }
+
+  & *:not(pre) > code {
+    padding: 0.2rem 0.4rem;
+    vertical-align: 0.1rem;
+    margin: 0 0.2rem;
   }
 `
 

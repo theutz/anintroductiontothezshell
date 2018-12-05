@@ -13,36 +13,40 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    color: ${(props) => props.theme.primary['400']};
-    font-size: ${modularScale(8)};
+    color: ${(props) => props.theme.primary['700']};
+    font-size: ${modularScale(6)};
     font-weight: lighter;
     letter-spacing: -1.5pt;
   }
 
   h2 {
-    color: ${(props) => props.theme.primary['400']};
-    font-size: ${modularScale(2)};
+    color: ${(props) => props.theme.primary['700']};
+    font-size: ${modularScale(5)};
     font-weight: lighter;
     letter-spacing: -0.5pt;
   }
 
   h3 {
-    font-size: ${modularScale(6)};
-    letter-spacing: 0;
-  }
-
-  h4 {
-    font-size: ${modularScale(5)};
-    letter-spacing: 0.25pt;
-  }
-
-  h5 {
+    color: ${(props) => props.theme.primary['400']};
+    font-weight: normal;
     font-size: ${modularScale(4)};
     letter-spacing: 0;
   }
 
-  h6 {
+  h4 {
     font-size: ${modularScale(3)};
+    font-weight: normal;
+    letter-spacing: 0.25pt;
+  }
+
+  h5 {
+    font-size: ${modularScale(2)};
+    font-weight: normal;
+    letter-spacing: 0;
+  }
+
+  h6 {
+    font-size: ${modularScale(1)};
     font-weight: medium;
   }
 
@@ -53,6 +57,13 @@ const GlobalStyle = createGlobalStyle`
     &:hover {
       color: ${(props) => props.theme.secondary['A700']};
     }
+  }
+
+  blockquote {
+    background: ${(props) => props.theme.primary['50']};
+    font-style: italic;
+    padding: ${modularScale(-3)} ${modularScale(0)};
+    margin: 0;
   }
 `
 
