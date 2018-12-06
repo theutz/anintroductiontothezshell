@@ -4,11 +4,10 @@ import { graphql } from 'gatsby'
 
 function MarkdownLayout({ data }) {
   const { markdownRemark } = data
-  const { frontmatter, html } = markdownRemark
+  const { html } = markdownRemark
 
   return (
     <Layout>
-      <h2>{frontmatter.title}</h2>
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </Layout>
   )
@@ -16,12 +15,8 @@ function MarkdownLayout({ data }) {
 
 export const pageQuery = graphql`
   query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+    markdownRemark(fields: { slug: { eq: $path } }) {
       html
-      frontmatter {
-        title
-        path
-      }
     }
   }
 `
