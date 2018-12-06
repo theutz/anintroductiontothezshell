@@ -59,6 +59,7 @@ const Item = styled.li`
 const treeEntry = {
   name: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
+  // eslint-disable-next-line
   entries: PropTypes.arrayOf(treeEntry),
 }
 
