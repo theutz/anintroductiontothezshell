@@ -68,6 +68,7 @@ const Container = styled.div`
     padding: 0.2rem 0.4rem;
     vertical-align: 0.1rem;
     margin: 0 0.2rem;
+    white-space: nowrap;
   }
 `
 
