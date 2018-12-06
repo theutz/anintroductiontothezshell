@@ -1,9 +1,4 @@
----
-path: '/introduction/filename-generation'
-title: 'Filename Generation'
-group: introduction
-order: 1
----
+## Filename Generation
 
 ### Globbing
 

@@ -1,9 +1,4 @@
----
-path: '/introduction/startup-files'
-title: 'Startup Files'
-group: introduction
-order: 2
----
+## Startup Files
 
 There are five startup files that zsh will read commands from:
 

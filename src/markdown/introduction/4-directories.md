@@ -1,9 +1,4 @@
----
-path: '/introduction/directories'
-title: Directories
-group: introduction
-order: 4
----
+## Directories
 
 One nice feature of zsh is the way it prints directories. For example, if we set the prompt like this:
 

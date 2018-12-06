@@ -1,9 +1,4 @@
----
-path: '/introduction/shell-functions'
-title: 'Shell Functions'
-group: introduction
-order: 3
----
+## Shell Functions
 
 ### Arguments and Aliases
 
