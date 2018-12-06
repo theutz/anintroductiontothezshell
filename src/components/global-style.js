@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { normalize, modularScale, fluidRange } from 'polished'
+import { normalize, modularScale } from 'polished'
 
 const GlobalStyle = createGlobalStyle`
   ${normalize()}
@@ -48,6 +48,11 @@ const GlobalStyle = createGlobalStyle`
   h6 {
     font-size: ${modularScale(1)};
     font-weight: medium;
+  }
+
+  p {
+    margin-top: ${modularScale(2)};
+    line-height: ${modularScale(1.5)};
   }
 
   a {

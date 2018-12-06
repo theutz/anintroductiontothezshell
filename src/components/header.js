@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import { modularScale, readableColor, fluidRange } from 'polished'
+import { modularScale, readableColor } from 'polished'
 import styled from 'styled-components'
 import media from 'styled-media-query'
 import PropTypes from 'prop-types'
