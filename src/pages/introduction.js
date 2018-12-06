@@ -1,15 +1,6 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import {
-  map,
-  capitalize,
-  split,
-  last,
-  pipe,
-  compact,
-  words,
-  join,
-} from 'lodash/fp'
+import { first } from 'lodash/fp'
 import Layout from '../components/layout'
 import TableOfContents from '../components/table-of-contents'
 
@@ -21,6 +12,9 @@ function Introduction() {
           allMarkdownRemark(sort: { order: ASC, fields: [fields___order] }) {
             edges {
               node {
+                headings {
+                  value
+                }
                 fields {
                   slug
                   order
@@ -32,14 +26,7 @@ function Introduction() {
       `}
       render={(data) => {
         const pages = data.allMarkdownRemark.edges.map(({ node }) => ({
-          name: pipe(
-            split('/'),
-            compact,
-            last,
-            words,
-            map(capitalize),
-            join(' ')
-          )(node.fields.slug),
+          name: first(node.headings).value,
           link: node.fields.slug,
         }))
 
