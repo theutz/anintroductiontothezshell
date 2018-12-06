@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link, StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import Layout from '../components/layout'
+import TableOfContents from '../components/table-of-contents'
 
 function Introduction() {
   return (
@@ -22,18 +23,15 @@ function Introduction() {
         }
       `}
       render={(data) => {
-        const pages = data.allMarkdownRemark.edges.map(
-          ({ node }) => node.frontmatter
-        )
+        const pages = data.allMarkdownRemark.edges.map(({ node }) => ({
+          name: node.frontmatter.title,
+          link: node.frontmatter.path,
+        }))
+
         return (
           <Layout>
-            <ul>
-              {pages.map(({ title, path }) => (
-                <li key={path}>
-                  <Link to={path}>{title}</Link>
-                </li>
-              ))}
-            </ul>
+            <h2>Table of Contents</h2>
+            <TableOfContents entries={pages} />
           </Layout>
         )
       }}
