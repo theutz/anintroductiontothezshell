@@ -2,7 +2,10 @@ import { createGlobalStyle } from 'styled-components'
 import { normalize, modularScale } from 'polished'
 
 const GlobalStyle = createGlobalStyle`
-  ${normalize()}
+  ${normalize()};
+  * {
+    box-sizing: border-box;
+  }
   
   body {
     font-family: 'IBM Plex Sans Condensed', sans-serif;
