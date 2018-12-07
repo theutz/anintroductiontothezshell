@@ -30,9 +30,7 @@ function MarkdownLayout({ data }) {
         {!!prev && (
           <Prev to={getSlug(prev)}>{getFirstHeadingFromNode(prev)}</Prev>
         )}
-        <Current to={getSlug(markdownRemark)}>
-          {getFirstHeadingFromNode(markdownRemark)}
-        </Current>
+        <Up to="/introduction">Table of Contents</Up>
         {!!next && (
           <Next to={getSlug(next)}>{getFirstHeadingFromNode(next)}</Next>
         )}
@@ -82,9 +80,9 @@ const Prev = styled(Link)`
   }
 `
 
-const Current = styled(Link)`
+const Up = styled(Link)`
   &:before {
-    content: '🎯 ';
+    content: '☝️ ';
   }
 `
 
