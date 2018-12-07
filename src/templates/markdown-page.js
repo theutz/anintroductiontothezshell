@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, Link as GatsbyLink } from 'gatsby'
-import { pipe, get, eq, find, first, defaultTo } from 'lodash/fp'
+import { pipe, get, eq, find, first } from 'lodash/fp'
 import { modularScale } from 'polished'
 import media from 'styled-media-query'
 import styled from 'styled-components'

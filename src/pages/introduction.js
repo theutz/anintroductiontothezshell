@@ -1,6 +1,6 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import { first } from 'lodash/fp'
+import { first, get, pipe } from 'lodash/fp'
 import Layout from '../components/layout'
 import TableOfContents from '../components/table-of-contents'
 
@@ -26,8 +26,12 @@ function Introduction() {
       `}
       render={(data) => {
         const pages = data.allMarkdownRemark.edges.map(({ node }) => ({
-          name: first(node.headings).value,
-          link: node.fields.slug,
+          name: pipe(
+            get('headings'),
+            first,
+            get('value')
+          )(node),
+          link: get('fields.slug', node),
         }))
 
         return (
