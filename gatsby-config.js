@@ -24,6 +24,10 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: { icon: null },
+          },
+          {
             resolve: `gatsby-remark-prismjs`,
             options: { aliases: { zsh: 'bash' } },
           },
