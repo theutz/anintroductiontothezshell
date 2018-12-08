@@ -1,6 +1,8 @@
 ## Directory Stacks
 
-If you use csh, you may know about directory stacks. The `pushd` command puts the current directory on the stack, and changes to a new directory; the `popd` command pops a directory off the stack and changes to it.
+If you use csh, you may know about directory stacks. The `pushd` command puts
+the current directory on the stack, and changes to a new directory; the `popd`
+command pops a directory off the stack and changes to it.
 
 ```bash
 phoenix% cd
@@ -30,7 +32,9 @@ Z /etc> popd
 /tmp ~
 ```
 
-zsh's directory stack commands work similarly. One difference is the way `pushd` is handled if no arguments are given. As in csh, this exchanges the top two elements of the directory stack:
+zsh's directory stack commands work similarly. One difference is the way `pushd`
+is handled if no arguments are given. As in csh, this exchanges the top two
+elements of the directory stack:
 
 ```bash
 Z /tmp> dirs
@@ -65,7 +69,8 @@ Z ~> pushd
 
 ### "Directory History"
 
-As an alternative to using directory stacks in this manner, we can get something like a directory history by setting a few more options and parameters:
+As an alternative to using directory stacks in this manner, we can get something
+like a directory history by setting a few more options and parameters:
 
 ```bash
 ~> DIRSTACKSIZE=8
@@ -107,9 +112,14 @@ As an alternative to using directory stacks in this manner, we can get something
 ~>
 ```
 
-Note that `=2` expanded to the second directory in the history list, and that cd `-3` recalled the third directory in the list.
+Note that `=2` expanded to the second directory in the history list, and that cd
+`-3` recalled the third directory in the list.
 
-You may be wondering what all those options do. `AUTOPUSHD` made `cd` act like `pushd`. (`alias cd=pushd` is not sufficient, for various reasons.) `PUSHDMINUS` swapped the meaning of `cd +1` and `cd -1`; we want them to mean the opposite of what they mean in csh, because it makes more sense in this scheme, and it's easier to type:
+You may be wondering what all those options do. `AUTOPUSHD` made `cd` act like
+`pushd`. (`alias cd=pushd` is not sufficient, for various reasons.) `PUSHDMINUS`
+swapped the meaning of `cd +1` and `cd -1`; we want them to mean the opposite of
+what they mean in csh, because it makes more sense in this scheme, and it's
+easier to type:
 
 ```bash
 ~> dh
@@ -135,7 +145,8 @@ You may be wondering what all those options do. `AUTOPUSHD` made `cd` act like `
 /usr/pub>
 ```
 
-`PUSHDSILENT` keeps the shell from printing the directory stack each time we do a `cd`, and `PUSHDTOHOME` we mentioned earlier:
+`PUSHDSILENT` keeps the shell from printing the directory stack each time we do
+a `cd`, and `PUSHDTOHOME` we mentioned earlier:
 
 ```bash
 /usr/pub> unsetopt pushdsilent
@@ -155,7 +166,8 @@ You may be wondering what all those options do. `AUTOPUSHD` made `cd` act like `
 /etc>
 ```
 
-`DIRSTACKSIZE` keeps the directory stack from getting too large, much like `HISTSIZE`:
+`DIRSTACKSIZE` keeps the directory stack from getting too large, much like
+`HISTSIZE`:
 
 ```bash
 /etc> setopt pushdsilent

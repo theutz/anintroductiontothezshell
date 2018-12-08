@@ -1,6 +1,7 @@
 ## History
 
-There are several ways to manipulate history in zsh. One way is to use csh-style `!` history:
+There are several ways to manipulate history in zsh. One way is to use csh-style
+`!` history:
 
 ```bash
 % /usr/local/bin/!:0 !-2*:s/foo/bar/ >>!$
@@ -8,7 +9,8 @@ There are several ways to manipulate history in zsh. One way is to use csh-style
 
 If you don't want to use this, you can turn it off by typing `setopt nobanghist`.
 
-Another way is to use the `fc` command. For example, if you type an erroneous command:
+Another way is to use the `fc` command. For example, if you type an erroneous
+command:
 
 ```bash
 % for i in `cat /etc/clients`
@@ -21,7 +23,8 @@ zsh: command not found: rpu
 ...
 ```
 
-typing `fc` will execute an editor on this command, allowing you to fix it. (The default editor is `vi`, by the way, not `ed`).
+typing `fc` will execute an editor on this command, allowing you to fix it. (The
+default editor is `vi`, by the way, not `ed`).
 
 ```bash
 % fc
@@ -46,7 +49,8 @@ for i in `cat /etc/clients`
 ...
 ```
 
-A variant of the `fc` command is `r`, which redoes the last command, with optional changes:
+A variant of the `fc` command is `r`, which redoes the last command, with
+optional changes:
 
 ```bash
 % echo foo

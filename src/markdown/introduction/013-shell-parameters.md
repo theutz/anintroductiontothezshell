@@ -1,6 +1,7 @@
 ## Shell Parameters
 
-The shell has many predefined parameters that may be accessed. Here are some examples:
+The shell has many predefined parameters that may be accessed. Here are some
+examples:
 
 ```bash
 % sleep 10 &
@@ -72,7 +73,8 @@ zsh v2.00.03
 pf
 ```
 
-The `cdpath` variable sets the search path for the `cd` command. If you do not specify `.` somewhere in the path, it is assumed to be the first component.
+The `cdpath` variable sets the search path for the `cd` command. If you do not
+specify `.` somewhere in the path, it is assumed to be the first component.
 
 ```bash
 % cdpath=( /usr ~ ~/zsh )
@@ -107,7 +109,9 @@ diag         kvm          mdec         pub          swap         xpg2lib
 /usr/pub
 ```
 
-`PATH` and `path` both set the search path for commands. These two variables are equivalent, except that one is a string and one is an array. If the user modifies `PATH`, the shell changes `path` as well, and vice versa.
+`PATH` and `path` both set the search path for commands. These two variables are
+equivalent, except that one is a string and one is an array. If the user
+modifies `PATH`, the shell changes `path` as well, and vice versa.
 
 ```bash
 % PATH=/bin:/usr/bin:/tmp:.
@@ -133,15 +137,19 @@ The same is true of `CDPATH` and `cdpath`:
 /u/subbarao /usr/src /tmp
 ```
 
-In general, parameters with names in all lowercase are arrays; assignments to them take the form:
+In general, parameters with names in all lowercase are arrays; assignments to
+them take the form:
 
 ```bash
 name=(elem ...)
 ```
 
-Parameters with names in all uppercase are strings. If there is both an array and a string version of the same parameter, the string version is a colon-separated list, like `PATH`.
+Parameters with names in all uppercase are strings. If there is both an array
+and a string version of the same parameter, the string version is a
+colon-separated list, like `PATH`.
 
-`HISTFILE` is the name of the history file, where the history is saved when a shell exits.
+`HISTFILE` is the name of the history file, where the history is saved when a
+shell exits.
 
 ```bash
 % zsh
@@ -201,7 +209,8 @@ Thus, you can view a file simply by typing:
 foo!
 ```
 
-However, this is not csh or sh compatible. To correct this, change the value of the parameter `NULLCMD`, which is `cat` by default.
+However, this is not csh or sh compatible. To correct this, change the value of
+the parameter `NULLCMD`, which is `cat` by default.
 
 ```bash
 % NULLCMD=:
@@ -212,7 +221,8 @@ However, this is not csh or sh compatible. To correct this, change the value of 
 -rw-r--r--  1 pfalstad        0 May 24 05:41 file
 ```
 
-If `NULLCMD` is unset, the shell reports an error if no command is specified (like csh).
+If `NULLCMD` is unset, the shell reports an error if no command is specified
+(like csh).
 
 ```bash
 % unset NULLCMD
@@ -221,4 +231,7 @@ If `NULLCMD` is unset, the shell reports an error if no command is specified (li
 zsh: redirection with no command
 ```
 
-Actually, `READNULLCMD` is used whenever you have a null command reading input from a single file. Thus, you can set `READNULLCMD` to more or less rather than `cat`. Also, if you set `NULLCMD` to `:` for sh compatibility, you can still read files with `<` file if you leave `READNULLCMD` set to more.
+Actually, `READNULLCMD` is used whenever you have a null command reading input
+from a single file. Thus, you can set `READNULLCMD` to more or less rather than
+`cat`. Also, if you set `NULLCMD` to `:` for sh compatibility, you can still
+read files with `<` file if you leave `READNULLCMD` set to more.

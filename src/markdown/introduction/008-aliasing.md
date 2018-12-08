@@ -88,11 +88,14 @@ nicecolors  etc/        scr/        tmp/        iris/       zsh*
 Mailboxes/  mail/       notes
 ```
 
-(The pattern `*(R)` matches all readable files in the current directory, and `*(^R)` matches all unreadable files.)
+(The pattern `*(R)` matches all readable files in the current directory, and
+`*(^R)` matches all unreadable files.)
 
 ### Global Aliases
 
-Most other shells have aliases of this kind (command aliases). However, zsh also has global aliases, which are substituted anywhere on a line. Global aliases can be used to abbreviate frequently-typed usernames, hostnames, etc.
+Most other shells have aliases of this kind (command aliases). However, zsh also
+has global aliases, which are substituted anywhere on a line. Global aliases can
+be used to abbreviate frequently-typed usernames, hostnames, etc.
 
 ```bash
 % alias -g me=pfalstad gun=egsirer mjm=maruchck
@@ -126,13 +129,15 @@ Here are some more interesting uses.
 % w GF     # see what your friends are doing
 ```
 
-Another example makes use of zsh's process substitution. If you run NIS, and you miss being able to do this:
+Another example makes use of zsh's process substitution. If you run NIS, and you
+miss being able to do this:
 
 ```bash
 % grep pfalstad /etc/passwd
 ```
 
-you can define an alias that will seem more natural than `ypmatch pfalstad passwd`:
+you can define an alias that will seem more natural than
+`ypmatch pfalstad passwd`:
 
 ```bash
 % alias -g PASS='<(ypcat passwd)'
@@ -150,17 +155,31 @@ If you're really crazy, you can even call it /etc/passwd:
 pfalstad:*:3564:35:Paul John Falstad:/u/pfalstad:/usr/princeton/bin/zsh
 ```
 
-The last example shows one of the perils of global aliases; they have a lot of potential to cause confusion. For example, if you defined a global alias called `|` (which is possible), zsh would begin to act very strangely; every pipe symbol would be replaced with the text of your alias. To some extent, global aliases are like macros in C; discretion is advised in using them and in choosing names for them. Using names in all caps is not a bad idea, especially for aliases which introduce shell metasyntax (like `M` and `GF` above).
+The last example shows one of the perils of global aliases; they have a lot of
+potential to cause confusion. For example, if you defined a global alias called
+`|` (which is possible), zsh would begin to act very strangely; every pipe
+symbol would be replaced with the text of your alias. To some extent, global
+aliases are like macros in C; discretion is advised in using them and in
+choosing names for them. Using names in all caps is not a bad idea, especially
+for aliases which introduce shell metasyntax (like `M` and `GF` above).
 
 ### Compatibility with `csh`
 
-Note that zsh aliases are not like csh aliases. The syntax for defining them is different, and they do not have arguments. All your favorite csh aliases will probably not work under zsh. For example, if you try:
+Note that zsh aliases are not like csh aliases. The syntax for defining them is
+different, and they do not have arguments. All your favorite csh aliases will
+probably not work under zsh. For example, if you try:
 
 ```bash
 alias rm mv '\!* /tmp/wastebasket'
 ```
 
-no aliases will be defined, but zsh will not report an error. In csh, this line defines an alias that makes `rm` safe--files that are `rm`'d will be moved to a temporary directory instead of instantly destroyed. In zsh's syntax, however, this line asks the shell to print any existing alias definitions for `rm`, `mv`, or `!* /tmp/wastebasket`. Since there are none, most likely, the shell will not print anything, although alias will return a nonzero exit code. The proper syntax is this:
+no aliases will be defined, but zsh will not report an error. In csh, this line
+defines an alias that makes `rm` safe--files that are `rm`'d will be moved to a
+temporary directory instead of instantly destroyed. In zsh's syntax, however,
+this line asks the shell to print any existing alias definitions for `rm`, `mv`,
+or `!* /tmp/wastebasket`. Since there are none, most likely, the shell will not
+print anything, although alias will return a nonzero exit code. The proper
+syntax is this:
 
 ```bash
 alias rm='mv \!* /tmp/wastebasket'
@@ -173,7 +192,8 @@ However, this won't work either:
 zsh: no matches found: !*
 ```
 
-While this makes `rm` safe, it is certainly not what the user intended. In zsh, you must use a shell function for this:
+While this makes `rm` safe, it is certainly not what the user intended. In zsh,
+you must use a shell function for this:
 
 ```bash
 % unalias rm
@@ -186,7 +206,10 @@ While this makes `rm` safe, it is certainly not what the user intended. In zsh, 
 foo.dvi
 ```
 
-While this is much cleaner and easier to read (I hope you will agree), it is not csh-compatible. Therefore, a script to convert csh aliases and variables has been provided. You should only need to use it once, to convert all your csh aliases and parameters to zsh format:
+While this is much cleaner and easier to read (I hope you will agree), it is not
+csh-compatible. Therefore, a script to convert csh aliases and variables has
+been provided. You should only need to use it once, to convert all your csh
+aliases and parameters to zsh format:
 
 ```bash
 % csh
@@ -206,6 +229,13 @@ on () { last -2 $1 ; who | grep $1 }
 ...
 ```
 
-The first two aliases were converted to regular zsh aliases, while the third, since it needed to handle arguments, was converted to a function. `c2z` can convert most aliases to zsh format without any problems. However, if you're using some really arcane csh tricks, or if you have an alias with a name like `do` (which is reserved in zsh), you may have to fix some of the aliases by hand.
+The first two aliases were converted to regular zsh aliases, while the third,
+since it needed to handle arguments, was converted to a function. `c2z` can
+convert most aliases to zsh format without any problems. However, if you're
+using some really arcane csh tricks, or if you have an alias with a name like
+`do` (which is reserved in zsh), you may have to fix some of the aliases by
+hand.
 
-The `c2z` script checks your csh setup, and produces a list of zsh commands which replicate your aliases and parameter settings as closely as possible. You could include its output in your startup file, `.zshrc`.
+The `c2z` script checks your csh setup, and produces a list of zsh commands
+which replicate your aliases and parameter settings as closely as possible. You
+could include its output in your startup file, `.zshrc`.

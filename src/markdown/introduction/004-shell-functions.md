@@ -2,7 +2,8 @@
 
 ### Arguments and Aliases
 
-zsh also allows you to create your own commands by defining shell functions. For example:
+zsh also allows you to create your own commands by defining shell functions. For
+example:
 
 ```bash
 % yp () {
@@ -13,7 +14,9 @@ zsh also allows you to create your own commands by defining shell functions. For
 pfalstad:*:3564:35:Paul John Falstad:/u/pfalstad:/usr/princeton/bin/zsh
 ```
 
-This function looks up a user in the NIS password map. The `$1` expands to the first argument to `yp`. The function could have been equivalently defined in one of the following ways:
+This function looks up a user in the NIS password map. The `$1` expands to the
+first argument to `yp`. The function could have been equivalently defined in one
+of the following ways:
 
 ```bash
 % function yp {
@@ -27,7 +30,8 @@ This function looks up a user in the NIS password map. The `$1` expands to the f
 % function yp () ypmatch $1 passwd.byname
 ```
 
-Note that aliases are expanded when the function definition is parsed, not when the function is executed. For example:
+Note that aliases are expanded when the function definition is parsed, not when
+the function is executed. For example:
 
 ```bash
 % alias ypmatch=echo
@@ -36,7 +40,9 @@ Note that aliases are expanded when the function definition is parsed, not when 
 pfalstad:*:3564:35:Paul John Falstad:/u/pfalstad:/usr/princeton/bin/zsh
 ```
 
-Since the alias was defined after the function was parsed, it has no effect on the function's execution. However, if we define the function again with the alias in place:
+Since the alias was defined after the function was parsed, it has no effect on
+the function's execution. However, if we define the function again with the
+alias in place:
 
 ```bash
 % function yp () { ypmatch $1 passwd.byname }
@@ -45,7 +51,8 @@ Since the alias was defined after the function was parsed, it has no effect on t
 pfalstad passwd.byname
 ```
 
-it is parsed with the new alias definition in place. Therefore, in general you must define aliases before functions.
+it is parsed with the new alias definition in place. Therefore, in general you
+must define aliases before functions.
 
 ### Multiple Arguments
 
@@ -66,7 +73,9 @@ subbarao:*:3338:35:Kartik Subbarao:/u/subbarao:/usr/princeton/bin/zsh
 sukthnkr:*:1267:35:Rahul Sukthankar:/u/sukthnkr:/usr/princeton/bin/tcsh
 ```
 
-The `for i` loops through each of the function's arguments, setting `i` equal to each of them in turn. We can also make the function do something sensible if no arguments are given:
+The `for i` loops through each of the function's arguments, setting `i` equal to
+each of them in turn. We can also make the function do something sensible if no
+arguments are given:
 
 ```bash
 % yp () {
@@ -83,7 +92,9 @@ pfalstad:*:3564:35:Paul John Falstad:/u/pfalstad:/usr/princeton/bin/zsh
 sukthnkr:*:1267:35:Rahul Sukthankar:/u/sukthnkr:/usr/princeton/bin/tcsh
 ```
 
-`$#` is the number of arguments supplied to the function. If it is equal to zero, we print a usage message; otherwise, we loop through the arguments, and `ypmatch` all of them.
+`$#` is the number of arguments supplied to the function. If it is equal to
+zero, we print a usage message; otherwise, we loop through the arguments, and
+`ypmatch` all of them.
 
 Here's a function that selects a random line from a file:
 
@@ -106,7 +117,13 @@ SunOS Release 4.1.1 (PHOENIX) \#19: Tue May 14 19:03:15 EDT 1991
 %
 ```
 
-`randline` has a local variable, `z`, that holds the number of lines in the file. `$[RANDOM % z + 1]` expands to a random number between 1 and `z`. An expression of the form `$[...]` expands to the value of the arithmetic expression within the brackets, and the `RANDOM` variable returns a random number each time it is referenced. `%` is the modulus operator, as in C. Therefore, `sed -n $[RANDOM%z+1]p` picks a random line from its input, from 1 to `z`.
+`randline` has a local variable, `z`, that holds the number of lines in the
+file. `$[RANDOM % z + 1]` expands to a random number between 1 and `z`. An
+expression of the form `$[...]` expands to the value of the arithmetic
+expression within the brackets, and the `RANDOM` variable returns a random
+number each time it is referenced. `%` is the modulus operator, as in C.
+Therefore, `sed -n $[RANDOM%z+1]p` picks a random line from its input, from 1 to
+`z`.
 
 ### Viewing Function Definitions
 
@@ -173,7 +190,11 @@ Note that this could also have been implemented as an alias:
 
 ### Autoload
 
-Instead of defining a lot of functions in your `.zshrc`, all of which you may not use, it is often better to use the autoload builtin. The idea is, you create a directory where function definitions are stored, declare the names in your `.zshrc`, and tell the shell where to look for them. Whenever you reference a function, the shell will automatically load it into memory.
+Instead of defining a lot of functions in your `.zshrc`, all of which you may
+not use, it is often better to use the autoload builtin. The idea is, you create
+a directory where function definitions are stored, declare the names in your
+`.zshrc`, and tell the shell where to look for them. Whenever you reference a
+function, the shell will automatically load it into memory.
 
 ```bash
 % mkdir /tmp/funs
@@ -205,7 +226,9 @@ yp () {
 }
 ```
 
-This idea has other benefits. By adding a `#!` header to the files, you can make them double as shell scripts. (Although it is faster to use them as functions, since a separate process is not created.)
+This idea has other benefits. By adding a `#!` header to the files, you can make
+them double as shell scripts. (Although it is faster to use them as functions,
+since a separate process is not created.)
 
 ```bash
 % ed /tmp/funs/yp
@@ -224,4 +247,5 @@ ypmatch $1 passwd.byname
 sukthnkr:*:1267:35:Rahul Sukthankar:/u/sukthnkr:/usr/princeton/bin/tcsh
 ```
 
-Now other people, who may not use zsh, or who don't want to copy all of your `.zshrc`, may use these functions as shell scripts.
+Now other people, who may not use zsh, or who don't want to copy all of your
+`.zshrc`, may use these functions as shell scripts.

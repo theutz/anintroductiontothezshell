@@ -1,6 +1,7 @@
 ## Bindings
 
-Each of the above editor commands was actually a function bound by default to a certain key. The real names of the commands are:
+Each of the above editor commands was actually a function bound by default to a
+certain key. The real names of the commands are:
 
 ```bash
 expand-or-complete   TAB
@@ -10,13 +11,15 @@ accept-and-hold      ESC-A
 quote-line           ESC-'
 ```
 
-These bindings are arbitrary; you could change them if you want. For example, to bind `accept-line` to `^Z`:
+These bindings are arbitrary; you could change them if you want. For example, to
+bind `accept-line` to `^Z`:
 
 ```bash
 % bindkey '^Z' accept-line
 ```
 
-Another idea would be to bind the delete key to `delete-char`; this might be convenient if you use `^H` for backspace.
+Another idea would be to bind the delete key to `delete-char`; this might be
+convenient if you use `^H` for backspace.
 
 ```bash
 % bindkey '^?' delete-char
@@ -39,22 +42,31 @@ Or, you could bind `^X^H` to `run-help`:
 > '
 ```
 
-`universal-argument` multiplies the next command by 4. Thus `^X^Z^W` might delete the last four words on the line. If you bind space to `magic-space`, then csh-style history expansion is done on the line whenever you press the space bar.
+`universal-argument` multiplies the next command by 4. Thus `^X^Z^W` might
+delete the last four words on the line. If you bind space to `magic-space`, then
+csh-style history expansion is done on the line whenever you press the space
+bar.
 
-The `-s` flag to `bindkey` specifies that you are binding the key to a string, not a command. Thus `bindkey -s '^T' 'uptime\n'` lets you VMS lovers get the load average whenever you press `^T`.
+The `-s` flag to `bindkey` specifies that you are binding the key to a string,
+not a command. Thus `bindkey -s '^T' 'uptime\n'` lets you VMS lovers get the
+load average whenever you press `^T`.
 
-If you have a NeXT keyboard, the one with the `|` and `\` keys very inconveniently placed, the following bindings may come in handy:
+If you have a NeXT keyboard, the one with the `|` and `\` keys very
+inconveniently placed, the following bindings may come in handy:
 
 ```bash
 % bindkey -s '\/' '\\'
 % bindkey -s '\=' '|'
 ```
 
-Now you can type `ALT-/` to get a backslash, and `ALT-=` to get a vertical bar. This only works inside zsh, of course; `bindkey` has no effect on the key mappings inside talk or mail, etc.
+Now you can type `ALT-/` to get a backslash, and `ALT-=` to get a vertical bar.
+This only works inside zsh, of course; `bindkey` has no effect on the key
+mappings inside talk or mail, etc.
 
 ### Editing Variables
 
-Another use of the editor is to edit the value of variables. For example, an easy way to change your path is to use the `vared` command:
+Another use of the editor is to edit the value of variables. For example, an
+easy way to change your path is to use the `vared` command:
 
 ```bash
 % vared PATH
@@ -63,4 +75,5 @@ hck/bin:/u/subbarao/scripts:/usr/princeton/bin:/usr/ucb:/usr/bin:/bin:/usr/host
 s:/usr/princeton/bin/X11:/./usr/lang:/./usr/etc:/./etc
 ```
 
-You can now edit the path. When you press return, the contents of the edit buffer will be assigned to `PATH`.
+You can now edit the path. When you press return, the contents of the edit
+buffer will be assigned to `PATH`.

@@ -28,7 +28,9 @@ Also, set doesn't work for setting parameters:
 %
 ```
 
-Note that no error message was printed. This is because both of these commands were perfectly valid; the `set builtin` assigns its arguments to the positional parameters (`$1`, `$2`, etc.).
+Note that no error message was printed. This is because both of these commands
+were perfectly valid; the `set builtin` assigns its arguments to the positional
+parameters (`$1`, `$2`, etc.).
 
 ```bash
 % set foo=bar
@@ -57,7 +59,10 @@ If you're really intent on using the csh syntax, define a function like this:
 bar brrr
 ```
 
-But then, of course you can't use the form of `set` with options, like set `-F` (which turns off filename generation). Also, the set command by itself won't list all the parameters like it should. To get around that you need a case statement:
+But then, of course you can't use the form of `set` with options, like set `-F`
+(which turns off filename generation). Also, the set command by itself won't
+list all the parameters like it should. To get around that you need a case
+statement:
 
 ```bash
 % set () {
@@ -130,7 +135,13 @@ foo
 c
 ```
 
-The equivalent constructs in ksh (which are also supported in zsh) are a bit more general and easier to remember. When the shell expands `${foo#pat}`, it checks to see if pat matches a substring at the beginning of the value of `foo`. If so, it removes that portion of `foo`, using the shortest possible match. With `${foo##pat}`, the longest possible match is removed. `${foo%pat}` and `${foo%%pat}` remove the match from the end. Here are the ksh equivalents of the `:` modifiers:
+The equivalent constructs in ksh (which are also supported in zsh) are a bit
+more general and easier to remember. When the shell expands `${foo#pat}`, it
+checks to see if pat matches a substring at the beginning of the value of `foo`.
+If so, it removes that portion of `foo`, using the shortest possible match. With
+`${foo##pat}`, the longest possible match is removed. `${foo%pat}` and
+`${foo%%pat}` remove the match from the end. Here are the ksh equivalents of the
+`:` modifiers:
 
 ```bash
 % echo ${PWD%/*}
@@ -176,7 +187,8 @@ foo.c    foo.h    foo.o    foo.pro
 bar.c    bar.h    bar.o    bar.pro
 ```
 
-One possible source of confusion is the fact that in zsh, the result of parameter substitution is not split into words. Thus, this will not work:
+One possible source of confusion is the fact that in zsh, the result of
+parameter substitution is not split into words. Thus, this will not work:
 
 ```bash
 % srcs='glob.c exec.c init.c'
@@ -185,7 +197,8 @@ One possible source of confusion is the fact that in zsh, the result of paramete
 glob.c exec.c init.c not found
 ```
 
-This is considered a feature, not a bug. If splitting were done by default, as it is in most other shells, functions like this would not work properly:
+This is considered a feature, not a bug. If splitting were done by default, as
+it is in most other shells, functions like this would not work properly:
 
 ```bash
 $ ll () { ls -F $* }

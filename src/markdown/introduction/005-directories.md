@@ -1,6 +1,7 @@
 ## Directories
 
-One nice feature of zsh is the way it prints directories. For example, if we set the prompt like this:
+One nice feature of zsh is the way it prints directories. For example, if we set
+the prompt like this:
 
 ```bash
 phoenix% PROMPT='%~> '
@@ -10,7 +11,8 @@ phoenix% PROMPT='%~> '
 ~/src>
 ```
 
-the shell will print the current directory in the prompt, using the `~` character. However, zsh is smarter than most other shells in this respect:
+the shell will print the current directory in the prompt, using the `~`
+character. However, zsh is smarter than most other shells in this respect:
 
 ```bash
 ~/src> cd ~subbarao
@@ -35,13 +37,17 @@ the shell will print the current directory in the prompt, using the `~` characte
 ~foo/news/nntp/inews>
 ```
 
-Note that zsh prints other users' directories in the form `~user`. Also note that you can set a parameter and use it as a directory name; zsh will act as if `foo` is a user with the login directory `/usr/princeton/common/src`. This is convenient, especially if you're sick of seeing prompts like this:
+Note that zsh prints other users' directories in the form `~user`. Also note
+that you can set a parameter and use it as a directory name; zsh will act as if
+`foo` is a user with the login directory `/usr/princeton/common/src`. This is
+convenient, especially if you're sick of seeing prompts like this:
 
 ```bash
 phoenix:/usr/princeton/common/src/X.V11R4/contrib/clients/xv/docs>
 ```
 
-If you get stuck in this position, you can give the current directory a short name, like this:
+If you get stuck in this position, you can give the current directory a short
+name, like this:
 
 ```bash
 /usr/princeton/common/src/news/nntp/inews> inews=\$PWD
@@ -53,7 +59,10 @@ If you get stuck in this position, you can give the current directory a short na
 ~inews>
 ```
 
-When you reference a directory in the form `~inews`, the shell assumes that you want the directory displayed in this form; thus simply typing `echo ~inews` or `cd ~inews` causes the prompt to be shortened. You can define a shell function for this purpose:
+When you reference a directory in the form `~inews`, the shell assumes that you
+want the directory displayed in this form; thus simply typing `echo ~inews` or
+`cd ~inews` causes the prompt to be shortened. You can define a shell function
+for this purpose:
 
 ```bash
 ~inews> namedir () { $1=$PWD ; : ~\$1 }
@@ -71,13 +80,18 @@ When you reference a directory in the form `~inews`, the shell assumes that you 
 
 You may want to add this one-line function to your `.zshrc`.
 
-zsh can also put the current directory in your title bar, if you are using a windowing system. One way to do this is with the `chpwd` function, which is automatically executed by the shell whenever you change directory. If you are using xterm, this will work:
+zsh can also put the current directory in your title bar, if you are using a
+windowing system. One way to do this is with the `chpwd` function, which is
+automatically executed by the shell whenever you change directory. If you are
+using xterm, this will work:
 
 ```bash
 chpwd () { print -Pn '^[]2;%~^G' }
 ```
 
-The `-P` option tells print to treat its arguments like a prompt string; otherwise the `%~` would not be expanded. The `-n` option suppresses the terminating newline, as with `echo`.
+The `-P` option tells print to treat its arguments like a prompt string;
+otherwise the `%~` would not be expanded. The `-n` option suppresses the
+terminating newline, as with `echo`.
 
 If you are using an IRIS wsh, do this:
 
@@ -85,7 +99,8 @@ If you are using an IRIS wsh, do this:
 chpwd () { print -Pn '^[P1.y%~^[' }
 ```
 
-The `print -D` command has other uses. For example, to print the current directory to standard output in short form, you can do this:
+The `print -D` command has other uses. For example, to print the current
+directory to standard output in short form, you can do this:
 
 ```bash
 % print -D \$PWD

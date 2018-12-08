@@ -2,7 +2,10 @@
 
 ### Command Substitution
 
-Command substitution in zsh can take two forms. In the traditional form, a command enclosed in backquotes (`` `...` ``) is replaced on the command line with its output. This is the form used by the older shells. Newer shells (like zsh) also provide another form, `$(...)`. This form is much easier to nest.
+Command substitution in zsh can take two forms. In the traditional form, a
+command enclosed in backquotes (`` `...` ``) is replaced on the command line
+with its output. This is the form used by the older shells. Newer shells (like
+zsh) also provide another form, `$(...)`. This form is much easier to nest.
 
 ```bash
 % ls -l `echo /vmunix`
@@ -32,7 +35,8 @@ crwx-w----  1 subbarao  20,  86 May 23 18:38 ttyu6
 crw--w----  1 pfalstad  20,  99 May 23 18:41 ttyv3
 ```
 
-Many common uses of command substitution, however, are superseded by other mechanisms of zsh:
+Many common uses of command substitution, however, are superseded by other
+mechanisms of zsh:
 
 ```bash
 % ls -l `tty`
@@ -50,7 +54,8 @@ crw-rw-rw-  1 root      20,  28 May 23 18:35 /dev/ttyqc
 
 #### Pathname Completion
 
-A command name with a `=` prepended is replaced with its full pathname. This can be very convenient. If it's not convenient for you, you can turn it off:
+A command name with a `=` prepended is replaced with its full pathname. This can
+be very convenient. If it's not convenient for you, you can turn it off:
 
 ```bash
 % ls
@@ -81,7 +86,10 @@ subbarao ttyu6   May 23 15:04   (mad55sx15.Prince)
 shgchan  ttyvb   May 23 16:51   (gaudi.Princeton.)
 ```
 
-A command of the form `=(...)` is replaced with the name of a file containing its output. (A command substitution, on the other hand, is replaced with the output itself.) `print -l` is like `echo`, excepts that it prints its arguments one per line, the way `fgrep` expects them:
+A command of the form `=(...)` is replaced with the name of a file containing
+its output. (A command substitution, on the other hand, is replaced with the
+output itself.) `print -l` is like `echo`, excepts that it prints its arguments
+one per line, the way `fgrep` expects them:
 
 ```bash
 % print -l foo bar
@@ -145,7 +153,8 @@ or easily read archived mail:
 /tmp/zsha06024 not found
 ```
 
-Note that the shell creates a temporary file, and deletes it when the command is finished.
+Note that the shell creates a temporary file, and deletes it when the command is
+finished.
 
 ```bash
 % diff =(ls) =(ls -F)
@@ -161,4 +170,15 @@ Note that the shell creates a temporary file, and deletes it when the command is
 
 #### Process Substitution vs. Pipes
 
-If you read zsh's man page, you may notice that `<(...)` is another form of process substitution which is similar to `=(...)`. There is an important difference between the two. In the `<(...)` case, the shell creates a named pipe (FIFO) instead of a file. This is better, since it does not fill up the file system; but it does not work in all cases. In fact, if we had replaced `=(...)` with `<(...)` in the examples above, all of them would have stopped working except for `fgrep -f <(...)`. You can not edit a pipe, or open it as a mail folder; `fgrep`, however, has no problem with reading a list of words from a pipe. You may wonder why diff `<(foo) bar` doesn't work, since `foo | diff - bar` works; this is because diff creates a temporary file if it notices that one of its arguments is `-`, and then copies its standard input to the temporary file.
+If you read zsh's man page, you may notice that `<(...)` is another form of
+process substitution which is similar to `=(...)`. There is an important
+difference between the two. In the `<(...)` case, the shell creates a named pipe
+(FIFO) instead of a file. This is better, since it does not fill up the file
+system; but it does not work in all cases. In fact, if we had replaced `=(...)`
+with `<(...)` in the examples above, all of them would have stopped working
+except for `fgrep -f <(...)`. You can not edit a pipe, or open it as a mail
+folder; `fgrep`, however, has no problem with reading a list of words from a
+pipe. You may wonder why diff `<(foo) bar` doesn't work, since `foo | diff - bar`
+works; this is because diff creates a temporary file if it notices that one
+of its arguments is `-`, and then copies its standard input to the temporary
+file.

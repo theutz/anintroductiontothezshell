@@ -2,7 +2,8 @@
 
 ### Globbing
 
-Otherwise known as _globbing_, filename generation is quite extensive in zsh. Of course, it has all the basics:
+Otherwise known as _globbing_, filename generation is quite extensive in zsh. Of
+course, it has all the basics:
 
 ```bash
 % ls
@@ -38,7 +39,8 @@ foo.c  q.c
 
 ### Extended Globbing
 
-Also, if the `EXTENDEDGLOB` option is set, some new features are activated. For example, the `^` character negates the pattern following it:
+Also, if the `EXTENDEDGLOB` option is set, some new features are activated. For
+example, the `^` character negates the pattern following it:
 
 ```bash
 % setopt extendedglob
@@ -162,7 +164,8 @@ stuff/xxx/foobar  stuff/yyy/frobar
 
 ### Qualifiers
 
-One can add a number of qualifiers to the end of any of these patterns, to restrict matches to certain file types. A qualified pattern is of the form
+One can add a number of qualifiers to the end of any of these patterns, to
+restrict matches to certain file types. A qualified pattern is of the form
 
 > pattern(...)
 
@@ -209,7 +212,11 @@ file.h      foo.c       main.h      pipe        run2        run303
 file.pro    foo.o       main.o      q.c         run234      stuff/
 ```
 
-Note that `*(x)` and `*(*)` both match executables. `*(X)` matches files executable by others, as opposed to `*(x)`, which matches files executable by the owner. `*(R)` and `*(r)` match readable files; `*(W)` and `*(w)`, which checks for writable files. `*(W)` is especially important, since it checks for world-writable files:
+Note that `*(x)` and `*(*)` both match executables. `*(X)` matches files
+executable by others, as opposed to `*(x)`, which matches files executable by
+the owner. `*(R)` and `*(r)` match readable files; `*(W)` and `*(w)`, which
+checks for writable files. `*(W)` is especially important, since it checks for
+world-writable files:
 
 ```bash
 % l *(w)
@@ -274,7 +281,8 @@ pipe
 prw-r--r--  1 pfalstad        0 May 23 18:12 pipe
 ```
 
-`*(U)` matches all files owned by you. To search for all files not owned by you, use `*(^U)`:
+`*(U)` matches all files owned by you. To search for all files not owned by you,
+use `*(^U)`:
 
 ```bash
 % l -l *(^U)
