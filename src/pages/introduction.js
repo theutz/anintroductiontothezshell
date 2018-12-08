@@ -1,5 +1,6 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
+import { first, get, pipe } from 'lodash/fp'
 import Layout from '../components/layout'
 import TableOfContents from '../components/table-of-contents'
 
@@ -8,14 +9,15 @@ function Introduction() {
     <StaticQuery
       query={graphql`
         {
-          allMarkdownRemark(
-            sort: { order: ASC, fields: [frontmatter___order] }
-          ) {
+          allMarkdownRemark(sort: { order: ASC, fields: [fields___order] }) {
             edges {
               node {
-                frontmatter {
-                  path
-                  title
+                headings {
+                  value
+                }
+                fields {
+                  slug
+                  order
                 }
               }
             }
@@ -24,8 +26,12 @@ function Introduction() {
       `}
       render={(data) => {
         const pages = data.allMarkdownRemark.edges.map(({ node }) => ({
-          name: node.frontmatter.title,
-          link: node.frontmatter.path,
+          name: pipe(
+            get('headings'),
+            first,
+            get('value')
+          )(node),
+          link: get('fields.slug', node),
         }))
 
         return (

@@ -7,6 +7,8 @@ import { modularScale } from 'polished'
 import GlobalStyle from './global-style'
 import Header from './header'
 import theme from '../theme'
+import faviconMd from '../assets/images/favicon-16x16.png'
+import faviconLg from '../assets/images/favicon-32x32.png'
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -32,6 +34,8 @@ const Layout = ({ children }) => (
           ]}
         >
           <html lang="en" />
+          <link rel="icon" type="image/png" sizes="32x32" href={faviconLg} />
+          <link rel="icon" type="image/png" sizes="16x16" href={faviconMd} />
           <link
             href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans+Condensed:300,400,400i,500,700"
             rel="stylesheet"
@@ -68,6 +72,7 @@ const Container = styled.div`
     padding: 0.2rem 0.4rem;
     vertical-align: 0.1rem;
     margin: 0 0.2rem;
+    white-space: nowrap;
   }
 `
 
